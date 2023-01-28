@@ -1,3 +1,7 @@
+# READ ME
+
+1st round random pairings
+
 The basic principles of a Swiss System tournament are:
 
 The number of rounds to be played is declared beforehand.
