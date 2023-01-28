@@ -31,6 +31,7 @@ SAMPLE_SPREADSHEET_ID = '1X1rPI1x6GYm2mRRofPEyDdCNArYjO7mWQefBOTK5xxc'
 SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 
 def createRoundSheet(service, roundnumber, playerlist):
+    playeramount = str(len(playerlist))
     global SAMPLE_SPREADSHEET_ID
     data = {'requests': [
         {
@@ -42,7 +43,13 @@ def createRoundSheet(service, roundnumber, playerlist):
 
     res = service.spreadsheets().batchUpdate(spreadsheetId=SAMPLE_SPREADSHEET_ID, body=data).execute()
     SHEET_ID = res['replies'][0]['addSheet']['properties']['sheetId']
+    #wait until the column for whoever won fills up
+    #continuously check or wait for button press or something
+    
+    #get filled in values for who won
+    get_values(SAMPLE_SPREADSHEET_ID, "E1:E"+playeramount)
 
+    #change the order of players based on who won, making sure not to match with someone already played
 
 
 def main():
