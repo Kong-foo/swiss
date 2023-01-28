@@ -66,7 +66,7 @@ def main():
             print('No data found.')
             return
 
-        print('Name, Major:')
+        print('First Name, Last Name:')
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
             print('%s, %s' % (row[0], row[4]))
