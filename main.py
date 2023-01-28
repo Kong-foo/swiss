@@ -21,15 +21,17 @@ class Player:
 		global rounds
 		self.name = name
 		self.level = rounds
+		self.playersPlayed = [None for x in range(len(playernames))]
 
-p1 = Player("John")
 for i in range(0, len(playernames)):
 	listofplayers[i] = Player(playernames[i])
 
 roundnumber = 1
-print("round"+str(n))
+print("round "+str(roundnumber))
 for i in range(0,len(listofplayers), 2):
 	print(listofplayers[i].name, "plays against",listofplayers[i+1].name)
+	listofplayers[i].playersPlayed.append(listofplayers[i+1])
+	listofplayers[i+1].playersPlayed.append(listofplayers[i])
 
 getResultsInto(listofplayers, roundnumber)
 sortByRating(listofplayers)
