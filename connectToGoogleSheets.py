@@ -30,6 +30,20 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_SPREADSHEET_ID = '1X1rPI1x6GYm2mRRofPEyDdCNArYjO7mWQefBOTK5xxc'
 SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 
+def createRoundSheet(service, roundnumber, playerlist):
+    global SAMPLE_SPREADSHEET_ID
+    data = {'requests': [
+        {
+            'addSheet':{
+                'properties':{'title': 'Round'+str(roundnumber)}
+            }
+        }
+    ]}
+
+    res = service.spreadsheets().batchUpdate(spreadsheetId=SAMPLE_SPREADSHEET_ID, body=data).execute()
+    SHEET_ID = res['replies'][0]['addSheet']['properties']['sheetId']
+
+
 
 def main():
     """Shows basic usage of the Sheets API.
