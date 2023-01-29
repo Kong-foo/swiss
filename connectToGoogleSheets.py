@@ -1,4 +1,3 @@
-
 # Code to read a google sheet
 
 import pandas as pd
